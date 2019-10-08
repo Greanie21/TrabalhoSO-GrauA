@@ -38,7 +38,7 @@ namespace TrabSOGrauA
                 //6. Condição de parada da simulação
                 if (condicao_parada())
                 {
-                    tempo++;
+
                 }
                 else
                 {
@@ -79,6 +79,7 @@ namespace TrabSOGrauA
         {
             if (pAtual == null)
             {
+                tempo++;
                 foreach (PCB processoAdmitido in admitidos)
                 {
                     if (processoAdmitido.Estado == 'P')
@@ -101,7 +102,7 @@ namespace TrabSOGrauA
 
             //remove da lista para ficar mais facil de manipular
             admitidos.Remove(pAtual);
-
+            
             tempo++;
             tempoTrocaContexto++;
         }
@@ -111,7 +112,7 @@ namespace TrabSOGrauA
             if (pAtual != null)
             {
                 int rndNum = new Random().Next(101);
-
+                //rndNum = 1000;
 
                 if (rndNum < pAtual.Io_percent)
                 {
@@ -119,7 +120,7 @@ namespace TrabSOGrauA
                     pAtual.Estado = 'B';
 
                     //
-                    tamanhoAtual -= pAtual.Tamanho;
+                    //tamanhoAtual -= pAtual.Tamanho;
 
                     //registra o tempo que falta para o processo voltar a ficar Pronto
                     pAtual.T_bloqueio = 20;
@@ -170,7 +171,7 @@ namespace TrabSOGrauA
                     {
                         processo.Estado = 'P';
 
-                        tamanhoAtual += processo.Tamanho;
+                        //tamanhoAtual += processo.Tamanho;
 
                         admitidos.Add(processo);
                     }

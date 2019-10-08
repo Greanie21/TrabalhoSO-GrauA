@@ -40,7 +40,6 @@ namespace TrabSOGrauA
                 //6. Condição de parada da simulação
                 if (condicao_parada())
                 {
-                    tempo++;
                     quantumAtual--;
                 }
                 else
@@ -82,6 +81,7 @@ namespace TrabSOGrauA
         {
             if (pAtual == null)
             {
+                tempo++;
                 foreach (PCB processoAdmitido in admitidos)
                 {
                     if (processoAdmitido.Estado == 'P')
@@ -94,16 +94,6 @@ namespace TrabSOGrauA
                         throw new Exception("Eu ACHO q nao deveria ter acontecido isso");
                     }
                 }
-            }
-            else if (quantumAtual == 0)
-            {
-                quantumAtual = quantumDeTroca;
-
-                admitidos.Add(pAtual);
-                quantumAtual = quantumDeTroca;
-                pAtual.Estado = 'P';
-                pAtual = null;
-                return escalonar();
             }
             return false;
         }
@@ -124,15 +114,12 @@ namespace TrabSOGrauA
             if (pAtual != null)
             {
                 int rndNum = new Random().Next(101);
-
+                //rndNum = 1000;
 
                 if (rndNum < pAtual.Io_percent)
                 {
                     //bloqueia
                     pAtual.Estado = 'B';
-
-                    //
-                    tamanhoAtual -= pAtual.Tamanho;
 
                     //registra o tempo que falta para o processo voltar a ficar Pronto
                     pAtual.T_bloqueio = 20;
@@ -157,6 +144,24 @@ namespace TrabSOGrauA
                         //admitidos.Remove(pAtual);
                         quantumAtual = quantumDeTroca;
                         pAtual = null;
+                    }
+                    else
+                    {
+                        if (quantumAtual == 0)
+                        {
+                            quantumAtual = quantumDeTroca;
+
+                            admitidos.Add(pAtual);
+                            quantumAtual = quantumDeTroca;
+                            pAtual.Estado = 'P';
+                            pAtual = null;
+
+                            if (escalonar())
+                            {
+                                //3.Trocar contexto se for o caso
+                                trocar_contexto();
+                            }
+                        }
                     }
                 }
             }
@@ -185,8 +190,6 @@ namespace TrabSOGrauA
                     if (processo.T_bloqueio == 0)
                     {
                         processo.Estado = 'P';
-
-                        tamanhoAtual += processo.Tamanho;
 
                         admitidos.Add(processo);
                     }
@@ -217,7 +220,7 @@ namespace TrabSOGrauA
                 tempoTurnaroundTotal += processo.T_termino - processo.T_admissao;
             }
 
-            Console.WriteLine("Round Robin com quantum "+ quantumDeTroca + ":");
+            Console.WriteLine("Round Robin com quantum " + quantumDeTroca + ":");
             Console.WriteLine("Throughput médio (processos terminados por unidade de tempo):" + throughputMedio);
             Console.WriteLine("Tempo médio de espera:" + tempoEsperaTotal / processos.Count);
             Console.WriteLine("Tempo médio de turnaround (tempo entre início e fim do processo):" + tempoTurnaroundTotal / processos.Count);

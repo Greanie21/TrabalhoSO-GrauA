@@ -12,3 +12,10 @@ C:\Users\Greanie\Downloads\TrabSOGrauA\obj\Debug\TrabSOGrauA.csprojResolveAssemb
 C:\Users\Greanie\Downloads\TrabSOGrauA\obj\Debug\TrabSOGrauA.csproj.CoreCompileInputs.cache
 C:\Users\Greanie\Downloads\TrabSOGrauA\obj\Debug\TrabSOGrauA.exe
 C:\Users\Greanie\Downloads\TrabSOGrauA\obj\Debug\TrabSOGrauA.pdb
+C:\Users\alu201620608\Downloads\Trab\TrabalhoSO-GrauA-master\TrabSOGrauA\bin\Debug\TrabSOGrauA.exe.config
+C:\Users\alu201620608\Downloads\Trab\TrabalhoSO-GrauA-master\TrabSOGrauA\bin\Debug\TrabSOGrauA.exe
+C:\Users\alu201620608\Downloads\Trab\TrabalhoSO-GrauA-master\TrabSOGrauA\bin\Debug\TrabSOGrauA.pdb
+C:\Users\alu201620608\Downloads\Trab\TrabalhoSO-GrauA-master\TrabSOGrauA\obj\Debug\TrabSOGrauA.csprojAssemblyReference.cache
+C:\Users\alu201620608\Downloads\Trab\TrabalhoSO-GrauA-master\TrabSOGrauA\obj\Debug\TrabSOGrauA.csproj.CoreCompileInputs.cache
+C:\Users\alu201620608\Downloads\Trab\TrabalhoSO-GrauA-master\TrabSOGrauA\obj\Debug\TrabSOGrauA.exe
+C:\Users\alu201620608\Downloads\Trab\TrabalhoSO-GrauA-master\TrabSOGrauA\obj\Debug\TrabSOGrauA.pdb
